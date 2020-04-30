@@ -25,6 +25,12 @@ app.use(cookieParser());
 // ==============================
 const { User } = require('./Models/user');
 
+
+//===============================
+//              MIDDLEWARES
+// ==============================
+const { auth } = require('./Middleware/auth')
+
 //===============================
 //         User Routes
 // ==============================
@@ -73,7 +79,6 @@ app.get('/api/users/logout', auth, (req,res)=>{
     }
     )
 })
-
 
 app.get('/', (req, res)=>{
      res.send('Hey look here is my server')
