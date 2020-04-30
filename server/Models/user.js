@@ -55,7 +55,25 @@ userSchema.pre('save', function(next){
     }
 })
 
-// i am now going to use bcrypt to 
+// i am now going to use bcrypt to compare the passwords next for login
+userSchema.methods.comparePassword = function(candidatePassword, cb){
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
+        if (err) return cb(err)
+        cb(null, isMatch) 
+    })
+}
+
+// creating a json web token website knows when the user is logged in
+userSchema.methods.generateToken = function(cb){
+    let user = this;
+    let token = jwt.sign(user._id.toHexString(), process.env.SECRET);
+
+    user.token = token;
+    user.save(function(err, user){
+        if (err) return cb(err)
+        cb(null, user)
+    })
+}
 
 
 const User = mongoose.model('User', userSchema);
