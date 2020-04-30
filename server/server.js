@@ -43,6 +43,11 @@ app.post('/api/users/register', (req,res)=>{
     })
 })
 
+//login
+app.get('/api/users/login', (req,res)=> {
+    
+})
+
 
 app.get('/', (req, res)=>{
      res.send('Hey look here is my server')
