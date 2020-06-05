@@ -20,6 +20,10 @@ const jobSchema = mongoose.Schema({
     notes: {
         required: true,
         type: String
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Author'
     }
 });
 

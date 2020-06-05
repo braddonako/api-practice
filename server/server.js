@@ -24,6 +24,7 @@ app.use(cookieParser());
 //           MODELS
 // ==============================
 const { User } = require('./Models/user');
+const { Job } = require('./Models/job')
 
 
 //===============================
@@ -66,10 +67,6 @@ app.get('/api/users/login', (req,res)=> {
     })
 })
 
-// create a new job
-app.get('/api/jobs/newJob'), (req, res) => {
-    
-}
 
 //logout
 app.get('/api/users/logout', auth, (req,res)=>{
