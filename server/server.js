@@ -25,13 +25,39 @@ app.use(cookieParser());
 //           MODELS
 // ==============================
 const { User } = require('./Models/user');
-
-
-
+const { Job } = require('./Models/job')
 //===============================
 //              MIDDLEWARES
 // ==============================
 const { auth } = require('./Middleware/auth')
+
+// user controller for now
+
+
+//===============================
+//         Job Routes
+// ==============================
+
+app.get('/api/jobs', auth, async (req, res) => {
+    const user = await User
+        .findById(req.params.id)
+        .populate('jobs');
+    res.send(user)
+
+})
+
+app.post('/api/jobs/addJob', auth, (req, res) => {
+    const job = new Job(req.body)
+    console.log('is it even making it here')
+    job.save((err, doc) => {
+        if (err) return res.json({success: false, err})
+        res.status(200).json({
+            success: true,
+            info: doc
+        })
+        console.log(job)
+    })
+})
 
 //===============================
 //         User Routes
@@ -44,8 +70,8 @@ app.get('/api/users/auth', auth, (req, res) => {
         name: req.user.name,
         lastName: req.user.lastName,
         userName: req.user.userName,
-        jobs: req.user.jobs
-        // comment: req.user.comments
+        jobs: req.user.jobs,
+        id: req.user._id
     })
 })
 
@@ -97,6 +123,7 @@ app.get('/api/users/logout', auth, (req,res)=>{
 app.get('/', (req, res)=>{
      res.send('Hey look here is my server')
 })
+
 
 app.listen(3000, ()=> {
     console.log('Nodemon is awesome')
