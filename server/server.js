@@ -37,6 +37,17 @@ const { auth } = require('./Middleware/auth')
 //         User Routes
 // ==============================
 
+app.get('/api/users/auth', auth, (req, res) => {
+    res.status(200).json({
+        isAuth: true,
+        email: req.user.email,
+        name: req.user.name,
+        lastName: req.user.lastName,
+        userName: req.user.userName,
+        jobs: req.user.jobs
+        // comment: req.user.comments
+    })
+})
 
 //Register an account
 app.post('/api/users/register', (req,res)=>{
