@@ -2,19 +2,24 @@ const mongoose = require('mongoose');
 
 const jobSchema = mongoose.Schema({
     company: {
-        required: true
+        required: true,
+        type: String
     },
     titleOfPosition: {
-        required: true
+        required: true,
+        type: String
     },
     coverLetter: {
-        required: true
+        required: true,
+        type: Boolean
     },
     referral: {
-        required: true
+        required: true,
+        type: Boolean
     },
     notes: {
-        required: true
+        required: true,
+        type: String
     }
 });
 

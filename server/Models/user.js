@@ -20,12 +20,12 @@ const userSchema = mongoose.Schema({
         required: true,
         maxlength: 100
     },
-    lastname: {
+    lastName: {
         type: String,
         required: true,
         maxlength: 100
     },
-    username: {
+    userName: {
         type: String,
         required: true,
         unique: 1

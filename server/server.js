@@ -66,6 +66,11 @@ app.get('/api/users/login', (req,res)=> {
     })
 })
 
+// create a new job
+app.get('/api/jobs/newJob'), (req, res) => {
+    
+}
+
 //logout
 app.get('/api/users/logout', auth, (req,res)=>{
     User.findOneAndUpdate(
