@@ -23,7 +23,7 @@ const jobSchema = mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Author'
+        ref: 'User'
     }
 });
 

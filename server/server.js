@@ -14,7 +14,8 @@ mongoose.connect(process.env.DATABASE, {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
-});
+}).then(() => console.log('Database Connected'))
+    .catch(err => console.log(err));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -24,7 +25,7 @@ app.use(cookieParser());
 //           MODELS
 // ==============================
 const { User } = require('./Models/user');
-const { Job } = require('./Models/job')
+
 
 
 //===============================
