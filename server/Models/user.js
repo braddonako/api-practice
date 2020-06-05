@@ -30,6 +30,14 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: 1
     },
+    jobs: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Job'
+        },
+        {
+            timestamps: true
+        }],
     token: {
         type: String
     }
