@@ -25,11 +25,6 @@ const userSchema = mongoose.Schema({
         required: true,
         maxlength: 100
     },
-    userName: {
-        type: String,
-        required: true,
-        unique: 1
-    },
     jobs: [
         {
             type: mongoose.Schema.Types.ObjectId,

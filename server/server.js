@@ -40,23 +40,39 @@ const { auth } = require('./Middleware/auth')
 
 app.get('/api/jobs', auth, async (req, res) => {
     const user = await User
-        .findById(req.params.id)
+        .findById(req.params._id)
         .populate('jobs');
     res.send(user)
 
 })
 
+// add a new job to your board
 app.post('/api/jobs/addJob', auth, (req, res) => {
     const job = new Job(req.body)
     console.log('is it even making it here')
-    job.save((err, doc) => {
-        if (err) return res.json({success: false, err})
-        res.status(200).json({
-            success: true,
-            info: doc
+    job.save()
+    .then((result) => {
+        User.findOne({ user: job.username}, (err, user)=>{
+            if(user){
+                user.jobs.push(job);
+                user.save();
+                res.json({message: 'Job has been added!!'})
+            }
         })
-        console.log(job)
+        .catch((error) => {
+            res.status(500).json({ error });
+        })
+    // if (err) return res.json({
+    //     success: false,
+    //     err
+    // })
+    // res.status(200).json({
+    //     success: true,
+    //     info: doc
+    // })
+    // console.log(job)
     })
+
 })
 
 //===============================
