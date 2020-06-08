@@ -111,30 +111,39 @@ app.get('/api/jobs', auth, async (req, res) => {
 app.post('/api/jobs/addJob', auth, async (req, res) => {
 
     const job = new Job(req.body)
-    console.log('is it even making it here')
-    console.log(req.user.jobs, '<-- this is during the job')
+    // console.log('is it even making it here')
+    // console.log(req.user.jobs, '<-- this is during the job')
     job.save()
-    .then((result) => {
+    const currentUser = req.user;
+    User.findById(currentUser)
+    console.log(currentUser, 'this is the user')
+    if(currentUser){
+        console.log(currentUser, 'user id in if')
+        currentUser.jobs.push(job);
+        currentUser.save();
+        res.json({message: 'Job has closed!!!!'})
+    }
+    // .then((result) => {
 
 
-        User.findOne({ user: job.id}, (err, user)=>{
-            console.log(user, 'this is the current user')
-            // const user = req.user.id;
-            console.log(req.user.id, '<-- this is the req.user.id')
+    //     User.findOne({ user: job.id}, (err, user)=>{
+    //         console.log(user, 'this is the current user')
+    //         // const user = req.user.id;
+    //         console.log(req.user.id, '<-- this is the req.user.id')
 
-            if(user){
-                // console.log(user, "<-- this is the user")
+    //         if(user){
+    //             // console.log(user, "<-- this is the user")
                 
-                user.jobs.push(job);
-                user.save();
-                res.json({message: 'Job has been added!!'})
-            }
-        })
-        .catch((error) => {
-            result.status(500).json({ error });
-        })
+    //             user.jobs.push(job);
+    //             user.save();
+    //             res.json({message: 'Job has been added!!'})
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         result.status(500).json({ error });
+    //     })
 
-    })
+    // })
 
 })
 
