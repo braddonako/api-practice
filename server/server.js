@@ -31,49 +31,7 @@ const { Job } = require('./Models/job')
 // ==============================
 const { auth } = require('./Middleware/auth')
 
-// user controller for now
 
-
-//===============================
-//         Job Routes
-// ==============================
-
-app.get('/api/jobs', auth, async (req, res) => {
-    const user = await User
-        .findById(req.params._id)
-        .populate('jobs');
-    res.send(user)
-
-})
-
-// add a new job to your board
-app.post('/api/jobs/addJob', auth, (req, res) => {
-    const job = new Job(req.body)
-    console.log('is it even making it here')
-    job.save()
-    .then((result) => {
-        User.findOne({ user: job.username}, (err, user)=>{
-            if(user){
-                user.jobs.push(job);
-                user.save();
-                res.json({message: 'Job has been added!!'})
-            }
-        })
-        .catch((error) => {
-            res.status(500).json({ error });
-        })
-    // if (err) return res.json({
-    //     success: false,
-    //     err
-    // })
-    // res.status(200).json({
-    //     success: true,
-    //     info: doc
-    // })
-    // console.log(job)
-    })
-
-})
 
 //===============================
 //         User Routes
@@ -85,11 +43,12 @@ app.get('/api/users/auth', auth, (req, res) => {
         email: req.user.email,
         name: req.user.name,
         lastName: req.user.lastName,
-        userName: req.user.userName,
         jobs: req.user.jobs,
         id: req.user._id
     })
 })
+
+
 
 //Register an account
 app.post('/api/users/register', (req,res)=>{
@@ -134,6 +93,54 @@ app.get('/api/users/logout', auth, (req,res)=>{
         })
     }
     )
+})
+
+//===============================
+//         Job Routes
+// ==============================
+
+app.get('/api/jobs', auth, async (req, res) => {
+    const user = await User
+        .findById(req.params._id)
+        .populate('jobs');
+    res.send(user)
+
+})
+
+// add a new job to your board
+app.post('/api/jobs/addJob', auth, async (req, res) => {
+
+    const job = new Job(req.body)
+    console.log('is it even making it here')
+    console.log(req.user.jobs, '<-- this is during the job')
+    job.save()
+    .then((result) => {
+
+
+        User.findOne({ user: job.id}, (err, user)=>{
+            console.log(user, 'this is the current user')
+            // const user = req.user.id;
+            console.log(req.user.id, '<-- this is the req.user.id')
+
+            if(user){
+                // console.log(user, "<-- this is the user")
+                
+                user.jobs.push(job);
+                user.save();
+                res.json({message: 'Job has been added!!'})
+            }
+        })
+        .catch((error) => {
+            result.status(500).json({ error });
+        })
+
+    })
+
+})
+
+// delete job from your board
+app.delete('/api/jobs/delete/:id', function (){
+    
 })
 
 app.get('/', (req, res)=>{
