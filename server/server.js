@@ -39,10 +39,11 @@ const { auth } = require('./Middleware/auth')
 
 // get job by id
 app.get('/api/jobs', auth, (req, res) => {
-    // const allJobs = req.user.jobs;
-    // res.json({allJobs});
+
     let type = req.query.type;
     let items = req.query.id;
+    console.log(items, 'this is the type')
+    // let ids = [];
 
     if(type === "array"){
         let ids = req.query.id.split(',');
@@ -50,34 +51,40 @@ app.get('/api/jobs', auth, (req, res) => {
         items = ids.map(item => {
             return mongoose.Types.ObjectId(item)
         })
+        
     }
-
-    Job
-    .find({'_id': {$in:items}}).
-    exec((err, docs)=> {
+    // console.log(req.query.id.split(','))
+        Job
+        // .find({'_id': {$in:[req.query.id.split(',')[0]]}}).
+        .find({'_id':{$in:items}}).
+        populate('jobs').
+        exec((err, docs)=> {
+            console.log(docs, '<-- this is the docs')
+            console.log(err, '<-- this is the err')
         return res.status(200).send(docs)
-    });
-
-
     
+    });
+   
+   
+
 })
 
 // add a new job to your board
 app.post('/api/jobs/addJob', auth, (req, res) => {
 
+
     const job = new Job(req.body)
     // console.log('is it even making it here')
     // console.log(req.user.jobs, '<-- this is during the job')
     console.log(job, '<-- this is the job');
-    // job.save()
+    job.save()
     const currentUser = req.user;
-    User.findById({currentUser})
-    // console.log(currentUser, 'this is the user')
+    User.findOneAndUpdate({currentUser})
+    console.log(currentUser, 'this is the user')
     if(currentUser){
         // console.log(currentUser, 'user id in if')
         console.log(job, 'here is the current job, line 78');
         currentUser.jobs.push(job);
-        
         currentUser.save();
         console.log(currentUser, 'here is the current user after the job saves')
         res.json({message: 'Job has been posted!!!!'})
@@ -86,8 +93,16 @@ app.post('/api/jobs/addJob', auth, (req, res) => {
 })
 
 // delete job from your board
-app.delete('/api/jobs/delete/:id', function (){
+app.delete('/api/jobs/delete/:id', auth, (req,res) => {
     
+        Job
+        .findByIdAndDelete({'_id': req.params.id}).
+        exec((err, docs)=> {
+            console.log(docs, '<-- this is the docs')
+            console.log(err, '<-- this is the err')
+        return res.status(200).send(docs)
+    
+    });
 })
 
 app.get('/', (req, res)=>{
