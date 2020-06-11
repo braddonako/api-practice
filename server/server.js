@@ -101,8 +101,18 @@ app.delete('/api/jobs/delete/:id', auth, (req,res) => {
             console.log(docs, '<-- this is the docs')
             console.log(err, '<-- this is the err')
         return res.status(200).send(docs)
+
+
     
     });
+})
+
+//update route
+app.put('/api/jobs/edit/:id', auth, (req,res) => {
+    Job.findOneAndUpdate(req.params.id, req.body, { new: true }).
+    exec((err, docs) => {
+        return res.status(200).send(docs)
+    })
 })
 
 app.get('/', (req, res)=>{
