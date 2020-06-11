@@ -197,7 +197,8 @@ app.get('/api/users/logout', auth, (req, res) => {
     )
 })
 
+const port = process.env.PORT || 3002;
 
-app.listen(3000, ()=> {
-    console.log('Nodemon is awesome')
+app.listen(3002, ()=> {
+    console.log(`Nodemon is awesome, ${port}`);
 })
