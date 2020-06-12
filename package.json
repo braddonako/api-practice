@@ -1,0 +1,31 @@
+{
+  "name": "api-practice",
+  "version": "1.0.0",
+  "description": "npm install node bcrypt body-parser cookie-parser dotenv express express-middleware jsonwebtoken mongoose nodemon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braddonako/api-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/braddonako/api-practice/issues"
+  },
+  "homepage": "https://github.com/braddonako/api-practice#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-middleware": "^3.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.18",
+    "node": "^14.4.0",
+    "nodemon": "^2.0.4"
+  }
+}
