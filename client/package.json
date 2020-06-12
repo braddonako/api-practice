@@ -12,7 +12,6 @@
   "author": "",
   "dependencies": {
     "axios": "^0.19.2",
-    "http-proxy-middleware": "^1.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -33,5 +32,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:3002/api"
 }

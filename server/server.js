@@ -10,12 +10,14 @@ const mongoose = require('mongoose')
 require('dotenv').config();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
 })
+
+console.log(process.env.MONGODB_URI, '<-- this is the DB')
 // .then(() => console.log('Database Connected'))
 //     .catch(err => console.log(err));
 
