@@ -62,4 +62,5 @@ export const isFormValid = (formdata, formName) => {
     for(let key in formdata){
         formIsValid = formdata[key].valid && formIsValid
     }
+    return formIsValid;
 }

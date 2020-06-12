@@ -22,4 +22,4 @@ ReactDOM.render(
       </BrowserRouter>
     </Provider>
 
-, document.querySelector('#root'));
+, document.getElementById('root'));
