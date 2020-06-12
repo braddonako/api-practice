@@ -54,7 +54,7 @@ class Login extends Component {
         let formIsValid = isFormValid(this.state.formdata, 'login');
 
         if(formIsValid){
-            console.log(dataToSubmit)
+            this.props.dispatch(loginUser(dataToSubmit)); // dispatch comes from redux
         } else {
             this.setState({
                 formError: true
