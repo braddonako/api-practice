@@ -22,7 +22,7 @@ header {
 }
 
 .page_wrapper {
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
 header #logo {
@@ -41,6 +41,7 @@ header .container {
 
 header a {
     margin-left: 20px;
+    text-decoration: none;
 }
 
 header .container .left {
@@ -100,9 +101,11 @@ button,
     text-transform: uppercase;
     padding: 10px;
     background: rgb(255, 255, 50, .8);
+    color: black;
     margin-top: 10px;
     font-family: 'Oswald', sans-serif;
     font-size: 16px;
+    text-decoration: none;
 }
 
 
@@ -111,6 +114,7 @@ button,
 /* ================== */
 .registerHeader {
     text-align: center;
+    font-size: 3em;
 }
 
 .register_login_container {
@@ -120,7 +124,7 @@ button,
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 80px 0px 110px 0px;
-    padding: 30px;
+    padding: 20px;
     min-height: 430px;
 }
 
@@ -139,4 +143,84 @@ button,
     font-weight: 300;
     font-size: 16px;
     width: 90%;
+}
+
+
+/* forms */
+/* ================== */
+/* Form */
+/* ================== */
+
+input {
+    font-size: 15px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+}
+
+.error_label {
+    color: #F44336;
+    display: block;
+    font-size: 15px;
+}
+
+textarea {
+    width: 100%;
+    height: 51px;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 1px solid #d1d1d1;
+}
+
+.form_devider {
+    border-bottom: 3px solid #999592;
+    margin: 40px 0px;
+}
+
+.label_inputs {
+    display: inline-block;
+    background: #999592;
+    color: #fff;
+    padding: 5px 5px;
+}
+
+select {
+    font-size: 16px;
+    height: 38px;
+    border: 1px solid #e9e9e9;
+    border-radius: 3px;
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+}
+
+.formBlock {
+    margin-bottom: 10px;
+}
+
+.form_block_two {
+    display: flex;
+}
+
+.form_block_two .block {
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+.form_block_two .block:nth-child(1) {
+    padding-right: 10px;
+}
+
+.form_block_two .block:nth-child(2) {
+    padding-left: 10px;
+}
+
+.form_success {
+    background: #4CAF50;
+    color: #ffffffff;
+    padding: 10px;
+    display: block;
 }
