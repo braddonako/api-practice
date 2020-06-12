@@ -33,6 +33,7 @@ const { Job } = require('./Models/job')
 const { auth } = require('./Middleware/auth')
 
 
+
 //===============================
 //         Job Routes
 // ==============================
@@ -197,8 +198,8 @@ app.get('/api/users/logout', auth, (req, res) => {
     )
 })
 
-const port = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3002;
 
 app.listen(3002, ()=> {
-    console.log(`Nodemon is awesome, ${port}`);
+    console.log(`Nodemon is awesome, ${PORT}`);
 })
