@@ -15,8 +15,9 @@ mongoose.connect(process.env.DATABASE, {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
-}).then(() => console.log('Database Connected'))
-    .catch(err => console.log(err));
+})
+// .then(() => console.log('Database Connected'))
+//     .catch(err => console.log(err));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
