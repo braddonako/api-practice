@@ -4,6 +4,7 @@ import {Switch, Route } from 'react-router-dom';
 import Home from './Components/Home/home';
 import Layout from './Components/hoc/layout';
 
+
 const Routes = () => {
   return(
     <Layout>
