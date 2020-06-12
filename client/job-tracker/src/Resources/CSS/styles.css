@@ -7,6 +7,11 @@ body {
     text-align: center;
 }
 
+.page_container {
+    min-height: 75vh;
+    padding-top: 125px;
+}
+
 #logo {
     color: black;
     font-size: 40px;

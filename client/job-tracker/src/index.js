@@ -2,19 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './Resources/CSS/styles.css';
 
-import Header from './Components/Header_Footer/header'
-import JobsList from './Components/jobsList/jobsList'
+import {BrowserRouter} from 'react-router-dom';
+import Routes from './routes'
 
+ReactDOM.render(
+  <BrowserRouter>
+      <Routes/>
+  </BrowserRouter>
 
-const App = () => {
-  return(
-    <div>
-      <Header/>
-      <JobsList/>
-    </div>
-  )
-  
-}
-
-
-ReactDOM.render(<App/>, document.querySelector('#root'));
+, document.querySelector('#root'));
