@@ -1,5 +1,6 @@
 body { 
     margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -7,9 +8,12 @@ body {
     margin: 0 auto;
 }
 
-.header {
-    background: rgba(255, 255, 68, 1);
-    text-align: center;
+header {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    background: rgba(255, 255, 68, .8);  
+    border-bottom: 1px solid rgba(36, 36, 33, .5);
 }
 
 .page_container {
@@ -17,20 +21,57 @@ body {
     padding-top: 125px;
 }
 
-#logo {
+.page_wrapper {
+    padding-top: 50px;
+}
+
+header #logo {
     color: black;
     font-size: 40px;
     font-family: 'Anton';
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
     padding-top: 20px;
     padding-bottom: 20px;
     font-weight: bolder;
 }
 
+header .container {
+    display: flex;
+}
+
+header a {
+    margin-left: 20px;
+}
+
+header .container .left {
+    width: 250px;
+}
+
+header .container .right {
+    flex-grow: 1;
+    /* border-left: 1px solid #f8333c;
+    border-right: 1px solid #f8333c; */
+}
+
+header .container .right .top,
+header .container .right .bottom {
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: right;
+    /* color: #f8333c; */
+    font-size: 15px;
+    padding: 10px 20px;
+}
 
 /* footer */
+
 .footerBgColor {
-    background-color: rgba(255, 255, 68, 1);
+    background-color: rgba(255, 255, 68, .8);
+    position: relative;
+    margin-top: 100px;
+    /* negative value of footer height */
+    height: 180px;
+    clear: both;
 }
 
 footer .logo {
@@ -40,4 +81,62 @@ footer .logo {
     font-size: 40px;
     padding: 11px 0px;
     border-bottom: 1px solid #4d4d4d;
+}
+
+
+/* Buttons */
+.link_default,
+button {
+    text-transform: uppercase;
+    padding: 10px;
+    display: table;
+    background:red;
+    margin-top: 10px;
+}
+
+button,
+.link_default {
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 10px;
+    background: rgb(255, 255, 50, .8);
+    margin-top: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+}
+
+
+/* ================== */
+/* Register/login */
+/* ================== */
+.registerHeader {
+    text-align: center;
+}
+
+.register_login_container {
+    display: flex;
+    border: 1px solid #999592;
+    border-top: 5px solid #999592;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 80px 0px 110px 0px;
+    padding: 30px;
+    min-height: 430px;
+}
+
+.register_login_container .left,
+.register_login_container .right {
+    flex: 1
+}
+
+.register_login_container h2 {
+    margin: 20px 0px;
+    text-transform: uppercase;
+    color: #686868;
+}
+
+.register_login_container p {
+    font-weight: 300;
+    font-size: 16px;
+    width: 90%;
 }
