@@ -1,0 +1,24 @@
+body { 
+    margin: 0;
+}
+
+.header {
+    background: rgba(255, 255, 68, 1);
+    text-align: center;
+}
+
+#logo {
+    color: black;
+    font-size: 40px;
+    font-family: 'Anton';
+    /* text-transform: uppercase; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bolder;
+}
+
+Header input {
+    font-size: 20px;
+    margin: 20px ;
+    padding-bottom: 10px;
+}
