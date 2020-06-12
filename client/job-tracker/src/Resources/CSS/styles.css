@@ -2,6 +2,11 @@ body {
     margin: 0;
 }
 
+.container {
+    width: 950px;
+    margin: 0 auto;
+}
+
 .header {
     background: rgba(255, 255, 68, 1);
     text-align: center;
@@ -22,8 +27,17 @@ body {
     font-weight: bolder;
 }
 
-Header input {
-    font-size: 20px;
-    margin: 20px ;
-    padding-bottom: 10px;
+
+/* footer */
+.footerBgColor {
+    background-color: rgba(255, 255, 68, 1);
+}
+
+footer .logo {
+    text-align: center;
+    font-family: 'oswald', sans-serif;
+    color: black;
+    font-size: 40px;
+    padding: 11px 0px;
+    border-bottom: 1px solid #4d4d4d;
 }
