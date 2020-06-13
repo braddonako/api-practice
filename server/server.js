@@ -4,10 +4,6 @@ const cookieParser = require('cookie-parser');
 
 
 const app = express()
-var cors = require('cors')
-
-
-
 
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -28,7 +24,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use(cors())
+
 //===============================
 //           MODELS
 // ==============================
