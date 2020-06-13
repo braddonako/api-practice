@@ -36,8 +36,6 @@
     "nodemon": "^2.0.4"
   },
   "proxy": {
-    "/api/": {
       "target": "http://localhost:3002"
-    }
   }
 }
