@@ -4,9 +4,12 @@ const cookieParser = require('cookie-parser');
 
 
 const app = express()
+var cors = require('cors')
 
 
-const mongoose = require('mongoose')
+
+
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose.Promise = global.Promise;
@@ -25,6 +28,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.use(cors())
 //===============================
 //           MODELS
 // ==============================
@@ -203,6 +207,6 @@ app.get('/api/users/logout', auth, (req, res) => {
 
 const PORT = process.env.PORT || 3002;
 
-app.listen(3002, ()=> {
+app.listen(process.env.PORT || 3002, () => {
     console.log(`Nodemon is awesome, ${PORT}`);
 })

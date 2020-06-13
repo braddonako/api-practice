@@ -3,7 +3,6 @@ import React from 'react';
 const Formfield = ({formdata, change, id}) => {
 
 
-    // this is a function that will let the user know they MUST enter a username and password == it is required
     const showError = () => {
         let errorMessage = null;
 
@@ -17,34 +16,57 @@ const Formfield = ({formdata, change, id}) => {
 
         return errorMessage;
     }
-   
-    const renderTemplate = () => {
 
-        let formTemplate = '';
+
+    const renderTemplate = () => {
+        let formTemplate = null;
 
         switch(formdata.element){
             case('input'):
                 formTemplate = (
-                    <div className='formBlock'>
+                    <div className="formBlock" type='submit'>
+                        {formdata.showlabel? 
+                        <div className='label_inputs'>
+                            {formdata.config.label}
+                        </div>  
+                        :null  
+                    }
                         <input
                             {...formdata.config}
                             value={formdata.value}
-                            onBlur={(event)=> change({event, id, blur:true})} // blur checks if something has been entered or not
-                            onChange={(event)=> change({event,id})}
+                            onBlur={(event)=> change({event,id,blur:true})}
+                            onChange={(event)=> change({event,id}) }
                         />
-
                         {showError()}
                     </div>
                 )
             break;
+            case('textarea'):
+            formTemplate = (
+                    <div className="formBlock">
+                        {formdata.showlabel? 
+                        <div className='label_inputs'>
+                            {formdata.config.label}
+                        </div>  
+                        :null }
+                        <textarea
+                            {...formdata.config}
+                            value={formdata.value}
+                            onBlur={(event)=> change({event,id,blur:true})}
+                            onChange={(event)=> change({event,id}) }
+                        />
+                        {showError()}
+                    </div>
+            )
+            break;
             default:
-                formTemplate = '';
+                formTemplate = null;
         }
 
         return formTemplate;
-
     }
-   
+
+
     return (
         <div>
             {renderTemplate()}

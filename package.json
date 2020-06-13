@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "npm run start --prefix client"
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,7 @@
     "body-parser": "^1.19.0",
     "concurrently": "^5.2.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-middleware": "^3.4.2",
