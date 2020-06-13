@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FormField from '../utils/Forms/formfield';
-import { update, generateData, isFormValid } from '../utils/Forms/formActions';
+import FormField from '../utils/Form/formfield';
+import { update, generateData, isFormValid } from '../utils/Form/formActions';
 import { withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
