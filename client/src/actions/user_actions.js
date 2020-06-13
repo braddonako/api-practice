@@ -8,7 +8,6 @@ import {
 } from '../Components/utils/misc';
 
 
-
 export function loginUser(dataToSubmit) {
 
     const request = axios.post(`${USER_SERVER}/login`, dataToSubmit)
