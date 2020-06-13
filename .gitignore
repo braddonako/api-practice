@@ -1,4 +1,7 @@
+.env 
+
+node_modules
+/build
 /client/node_modules
-/node_modules
-/.pnp
-.pnp.js
+/server/node_modules
+npm-debug.log*

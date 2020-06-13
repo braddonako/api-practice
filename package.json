@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "npm install node bcrypt body-parser cookie-parser dotenv express express-middleware jsonwebtoken mongoose nodemon",
   "main": "index.js",
+  "engines": {
+    "node": "12.11.1",
+    "npm": "6.14.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "npm run start --prefix client"
+    
   },
   "repository": {
     "type": "git",
@@ -34,8 +38,5 @@
     "mongoose": "^5.9.18",
     "node": "^14.4.0",
     "nodemon": "^2.0.4"
-  },
-  "proxy": {
-      "target": "http://localhost:3002"
   }
 }
