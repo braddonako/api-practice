@@ -20,6 +20,7 @@
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0"
   },
+   "proxy": "http://localhost:3002/api",
   "browserslist": {
     "production": [
       ">0.2%",

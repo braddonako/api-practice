@@ -70,7 +70,12 @@ class Login extends Component {
                         formError: true
                     })
                 
-            });
+            }).then(() => console.log('Database Connected'))
+                .catch(err => console.log(err));;
+    } else {
+        this.setState({
+            formError: true
+        })
     }
 }
 
