@@ -60,6 +60,9 @@ class Login extends Component {
         let dataToSubmit = generateData(this.state.formdata,'login');
         let formIsValid = isFormValid(this.state.formdata,'login')    
 
+        console.log(dataToSubmit, '<-- this is the data to submit');
+        console.log(formIsValid, '<-- is the form valid?')
+
         if(formIsValid){
             this.props.dispatch(loginUser(dataToSubmit)).then(response =>{
                 if(response.payload.loginSuccess){

@@ -14,11 +14,9 @@ mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
-})
-
-console.log(process.env.MONGODB_URI, '<-- this is the DB')
-// .then(() => console.log('Database Connected'))
-//     .catch(err => console.log(err));
+}).then(() => console.log('Database Connected'))
+    .catch(err => console.log(err));
+    console.log(process.env.MONGODB_URI, '<-- this is the DB')
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -200,6 +198,8 @@ app.get('/api/users/logout', auth, (req, res) => {
         }
     )
 })
+
+http.createServer(...).listen(process.env.npm_package_config_port)
 
 const PORT = process.env.PORT || 3002;
 
