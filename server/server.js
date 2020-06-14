@@ -199,7 +199,6 @@ app.get('/api/users/logout', auth, (req, res) => {
     )
 })
 
-http.createServer(...).listen(process.env.npm_package_config_port)
 
 const PORT = process.env.PORT || 3002;
 
