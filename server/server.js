@@ -1,10 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+const jsonPlaceholderProxy = createProxyMiddleware({
+    target: 'http://localhost:3002',
+    changeOrigin: true, // for vhosted sites, changes host header to match to target's host
+    logLevel: 'debug',
+});
+
 const app = express()
 
 const mongoose = require('mongoose');
 require('dotenv').config();
+
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI,  {
@@ -16,10 +26,10 @@ mongoose.connect(process.env.MONGODB_URI,  {
 }).then(() => console.log('Database Connected'))
     .catch(err => console.log(err));
     console.log(process.env.MONGODB_URI, '<-- this is the DB')
-    console.log(process.env.DB_HOST, '<-- this is the host')
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use('/users', jsonPlaceholderProxy); // this is the proxy server
 
 
 //===============================
@@ -204,3 +214,6 @@ const PORT = process.env.PORT || 3002;
 app.listen(process.env.PORT || 3002, () => {
     console.log(`Nodemon is awesome, ${PORT}`);
 })
+
+
+// require('open')('http://localhost:3002/api/users');
