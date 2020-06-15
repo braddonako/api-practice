@@ -1,29 +1,25 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const cors = require('cors')
-
 const app = express()
 
 const mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI,  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
+    
 }).then(() => console.log('Database Connected'))
     .catch(err => console.log(err));
     console.log(process.env.MONGODB_URI, '<-- this is the DB')
-
+    console.log(process.env.DB_HOST, '<-- this is the host')
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-
-app.use(cors())
 
 
 //===============================

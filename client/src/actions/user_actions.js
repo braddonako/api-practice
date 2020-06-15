@@ -9,12 +9,7 @@ import {
 
 export function loginUser(dataToSubmit) {
 
-    const request = axios.post(`http://localhost:3002/users/api/login`, dataToSubmit, {
-        headers: {
-            'Content-Type': 'application/json;charset=UTF-8',
-            "Access-Control-Allow-Origin": "*",
-        }
-    })
+    const request = axios.post(`${USER_SERVER}/login`, dataToSubmit)
         .then(response => response.data).catch(error => {
             console.log(error.response)
         });

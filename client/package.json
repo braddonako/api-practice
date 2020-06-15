@@ -10,8 +10,6 @@
   "author": "",
   "dependencies": {
     "axios": "^0.19.2",
-    "cors": "^2.8.5",
-    "http-proxy-middleware": "^1.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -21,6 +19,7 @@
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0"
   },
+  "proxy": "http://localhost:3002",
   "browserslist": {
     "production": [
       ">0.2%",
